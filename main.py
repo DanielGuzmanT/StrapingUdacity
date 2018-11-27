@@ -1,4 +1,4 @@
-from HTMLclass import *
+from Constants import *
 import requests
 from bs4 import BeautifulSoup
 from tabulate import tabulate
