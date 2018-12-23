@@ -1,4 +1,4 @@
-from Constants import *
+from Classes.Constants import *
 
 
 SKILLS_KEY = "Skills covered"
@@ -6,46 +6,37 @@ COLLAB_KEY = "Colaborators"
 LEVEL_KEY = "Level"
 
 
-@staticmethod
 def get_state(course):
     state = course.find("span", class_=STATE_COURSE)
     return "Active" if state is None else state.contents[0]
 
 
-@staticmethod
 def get_category(course):
     category = course.find("h4", class_=CATEGORY)
     return "No-category" if category is None else category.contents[0]
 
 
-@staticmethod
 def get_title(course):
     title_head = course.find("h3", class_=TITLE_HEAD)
     return title_head.text
 
 
-@staticmethod
 def get_skills(skills_tag):
     # skills covered:
     skills = skills_tag.find("span", LIST_SKILLS)
     return None if skills is None else skills.text.split(' ')
 
 
-@staticmethod
 def get_colaborators(collaborators_tag):
     collaborators = collaborators_tag.find("span", LIST_COLLAB)
-    if collaborators is None:
-        return "no-collaborators"
-    return collaborators.text
+    return "no-collaborators" if collaborators is None else collaborators.text
 
 
-@staticmethod
 def get_level(level_tag):
     level = level_tag.find("span", LEVEL_TEXT)
     return level.text
 
 
-@staticmethod
 def get_extra_data(course):
     data = {}
     data_block = course.find("div", class_=DATA)
