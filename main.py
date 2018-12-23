@@ -1,11 +1,8 @@
-from Constants import *
+from Classes.Constants import *
 import requests
 from bs4 import BeautifulSoup
 from tabulate import tabulate
 
-SKILLS_KEY = "Skills covered"
-COLLAB_KEY = "Colaborators"
-LEVEL_KEY = "Level"
 
 def get_state(course):
     state = course.find("span", class_=STATE_COURSE)
